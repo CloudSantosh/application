@@ -36,7 +36,7 @@ pipeline {
 
         stage('SONAR SCANNER') {
             environment {
-            sonar_token = credentials('SONAR_TOKEN')
+            sonar_token = credentials('SONAR-TOKEN')
             sonar_private_ip = credentials('192.168.0.234')
             }
             steps {
