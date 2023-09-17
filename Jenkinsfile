@@ -33,11 +33,11 @@ pipeline {
                 sh 'mvn clean install package'
             }
         } 
-          /*
+
         stage('SONAR SCANNER') {
             environment {
             sonar_token = credentials('SONAR_TOKEN')
-            sonar_private_ip = credentials('SONAR_PRIVATE_IP')
+            sonar_private_ip = credentials('192.168.0.234')
             }
             steps {
                 sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
@@ -46,7 +46,7 @@ pipeline {
                     -Dsonar.token=$sonar_token'
             }
         }
-     
+            /*   
         stage('COPY JAR & DOCKERFILE') {
             steps {
                 sh 'ansible-playbook $WORKSPACE/playbooks/create_directory.yml'
