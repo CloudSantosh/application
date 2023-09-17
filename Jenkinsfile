@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-      PATH = "$PATH:/opt/apache-maven-3.9.3/bin"
+      PATH = "$PATH:/opt/apache-maven-3.9.4/bin"
     }
     
     stages {
@@ -14,7 +14,7 @@ pipeline {
 
         stage('CODE CHECKOUT') {
             steps {
-                git 'https://github.com/sunnydevops2022/devops_real_time_project_1_english.git'
+                git 'https://github.com/CloudSantosh/application.git'
             }
         }
 
