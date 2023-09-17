@@ -17,7 +17,7 @@ pipeline {
                 git 'https://github.com/CloudSantosh/application.git'
             }
         }
-
+/*
         stage('MODIFIED IMAGE TAG') {
             steps {
                 sh '''
@@ -79,6 +79,6 @@ pipeline {
                     --extra-vars "JOB_NAME=$JOB_NAME"'
             }            
         }          
-
+*/
     }
 }      
