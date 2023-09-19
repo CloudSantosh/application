@@ -36,7 +36,7 @@ pipeline {
      
         stage('SONAR SCANNER') {
             environment {
-            sonar_token = credentials('SONAR-TOKEN')
+            sonar_token = credentials("SONAR-TOKEN")
             }
             steps {
                 sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
