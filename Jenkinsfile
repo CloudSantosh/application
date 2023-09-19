@@ -33,7 +33,7 @@ pipeline {
                 sh 'mvn clean install package'
             }
         } 
-     /*
+     
         stage('SONAR SCANNER') {
             environment {
             sonar_token = credentials('SONAR-TOKEN')
@@ -45,7 +45,7 @@ pipeline {
                     -Dsonar.token=$sonar_token'
             }
         }
-               
+/*     
         stage('COPY JAR & DOCKERFILE') {
             steps {
                 sh 'ansible-playbook $WORKSPACE/playbooks/create_directory.yml'
