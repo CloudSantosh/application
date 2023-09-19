@@ -33,7 +33,7 @@ pipeline {
                 sh 'mvn clean install package'
             }
         } 
-
+     /*
         stage('SONAR SCANNER') {
             environment {
             sonar_token = credentials('SONAR-TOKEN')
@@ -41,7 +41,7 @@ pipeline {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
                     -Dsonar.projectKey=$JOB_NAME \
-                    -Dsonar.host.url=http://192.168.0.234:9000 \
+                    -Dsonar.host.url=http://192.168.0.178:9000 \
                     -Dsonar.token=$sonar_token'
             }
         }
@@ -51,7 +51,7 @@ pipeline {
                 sh 'ansible-playbook $WORKSPACE/playbooks/create_directory.yml'
             }
         }
-        /*
+   
         stage('PUSH IMAGE ON DOCKERHUB') {
             environment {
             dockerhub_user = credentials('DOCKERHUB_USER')            
