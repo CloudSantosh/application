@@ -35,16 +35,22 @@ pipeline {
         } 
      
         stage('SONAR SCANNER') {
-            environment {
-            sonar_token = credentials('SONAR_TOKEN')
-            }
             steps {
-                sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
-                    -Dsonar.projectKey=$JOB_NAME \
-                    -Dsonar.host.url=http://3.144.14.54:9000 \
-                    -Dsonar.token=$sonar_token'
-            }
+                script {
+                    def sonar_token = credentials('SONAR_TOKEN')
+                    def sonar_url = 'http://18.220.219.161:9000'
+
+                    sh """
+                        mvn sonar:sonar \\
+                            -Dsonar.projectName=\${JOB_NAME} \\
+                            -Dsonar.projectKey=\${JOB_NAME} \\
+                            -Dsonar.host.url=${sonar_url} \\
+                            -Dsonar.token=${sonar_token}
+                    """
         }
+    }
+}
+
 /*     
         stage('COPY JAR & DOCKERFILE') {
             steps {
