@@ -38,18 +38,19 @@ pipeline {
         stage('SONAR SCANNER') {
             environment {
                  sonar_token = credentials('SONAR-TOKEN')
-        }
-             steps {
-                script {
-                    def projectName = JOB_NAME
-                    def sonarHostUrl = 'http://3.145.90.33:9000'
-                    sh """
-                        mvn sonar:sonar \
-                        -Dsonar.projectName=\$projectName \
-                        -Dsonar.projectKey=\$projectName \
-                        -Dsonar.host.url=\$sonarHostUrl \
-                        -Dsonar.token=\$sonar_token
-                    """
+                    }
+                steps {
+                    script {
+                        def projectName = JOB_NAME
+                        def sonarHostUrl = 'http://192.168.0.129:9000'
+                        
+                        sh '''
+                            mvn sonar:sonar \
+                            -Dsonar.projectName=\$projectName \
+                            -Dsonar.projectKey=\$projectName \
+                            -Dsonar.host.url=\$sonarHostUrl \
+                            -Dsonar.token=\$sonar_token
+                        '''
                  }
             }
         }
