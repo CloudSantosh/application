@@ -30,10 +30,10 @@ pipeline {
       
         stage('BUILD') {
             steps {
-                sh 'mvn clean'
+                sh 'mvn clean install package'
             }
         } 
-      /*
+      
 
         stage('SONAR SCANNER') {
             environment {
