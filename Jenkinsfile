@@ -51,13 +51,13 @@ pipeline {
             steps {
                 script {
                     def sonar_token = credentials('SONAR_TOKEN')
-                    def sonar_url = 'http://18.218.158.236:9000'
+                  //  def sonar_url = ''
                     
                     sh '''
                         mvn sonar:sonar \\
                         -Dsonar.projectName=\${JOB_NAME} \\
                         -Dsonar.projectKey=\${JOB_NAME} \\
-                        -Dsonar.host.url=${sonar_url} \\
+                        -Dsonar.host.url= http://18.218.158.236:9000 \\
                         -Dsonar.token=${sonar_token}
                     '''
         }
