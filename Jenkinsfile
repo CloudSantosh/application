@@ -33,7 +33,7 @@ pipeline {
                 sh 'mvn clean install package'
             }
         } 
-      /* 
+      
 
         stage('SONAR SCANNER') {
             environment {
@@ -53,7 +53,7 @@ pipeline {
                  }
             }
         }
-
+/*
         stage('SONAR SCANNER') {
             environment {
             sonar_token = credentials('SONAR-TOKEN')
