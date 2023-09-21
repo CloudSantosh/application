@@ -33,20 +33,40 @@ pipeline {
                 sh 'mvn clean install package'
             }
         } 
-     /*
+      /* 
+
         stage('SONAR SCANNER') {
             environment {
-            sonar_token = credentials('SONAR_TOKEN')
+                 sonar_token = credentials('SONAR-TOKEN')
+        }
+             steps {
+                script {
+                    def projectName = JOB_NAME
+                    def sonarHostUrl = 'http://3.145.90.33:9000'
+                    sh """
+                        mvn sonar:sonar \
+                        -Dsonar.projectName=\$projectName \
+                        -Dsonar.projectKey=\$projectName \
+                        -Dsonar.host.url=\$sonarHostUrl \
+                        -Dsonar.token=\$sonar_token
+                    """
+                 }
+            }
+        }
+
+        stage('SONAR SCANNER') {
+            environment {
+            sonar_token = credentials('SONAR-TOKEN')
             }
             steps {
                 sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
                     -Dsonar.projectKey=$JOB_NAME \
-                    -Dsonar.host.url=http://18.218.158.236:9000 \
+                    -Dsonar.host.url=http://3.145.90.33:9000 \
                     -Dsonar.token=${sonar_token}'
             }
         } 
-    */             
-    
+               
+   
         stage('SONAR SCANNER') {
             steps {
                 script {
@@ -54,17 +74,17 @@ pipeline {
                   //  def sonar_url = ''
                     
                     sh '''
-                        mvn sonar:sonar \\
+                        mvn clean sonar:sonar \\
                         -Dsonar.projectName=\${JOB_NAME} \\
                         -Dsonar.projectKey=\${JOB_NAME} \\
-                        -Dsonar.host.url= 'http://18.218.158.236:9000' \\
+                        -Dsonar.host.url= http://3.145.90.33:9000 \\
                         -Dsonar.token=${sonar_token}
                     '''
         }
     }
 }
 
-/*     
+    
         stage('COPY JAR & DOCKERFILE') {
             steps {
                 sh 'ansible-playbook $WORKSPACE/playbooks/create_directory.yml'
