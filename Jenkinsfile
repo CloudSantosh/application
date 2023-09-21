@@ -34,22 +34,6 @@ pipeline {
             }
         } 
       
-
-        stage('SONAR SCANNER') {
-            environment {
-                 sonar_token = credentials('SONAR-TOKEN')
-                    }
-                steps {
-                    script {
-                        def projectName = JOB_NAME
-
-                        sh '''
-                            mvn sonar:sonar -e -X -Dsonar.projectName=\$projectName -Dsonar.projectKey=\$projectName -Dsonar.host.url= http://3.145.90.33:9000 -Dsonar.token=\$sonar_token
-                        '''
-                 }
-            }
-        }
-/*
         stage('SONAR SCANNER') {
             environment {
             sonar_token = credentials('SONAR-TOKEN')
@@ -58,10 +42,10 @@ pipeline {
                 sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
                     -Dsonar.projectKey=$JOB_NAME \
                     -Dsonar.host.url=http://3.145.90.33:9000 \
-                    -Dsonar.token=${sonar_token}'
+                    -Dsonar.login=${sonar_token}'
             }
         } 
-               
+      /*         
    
         stage('SONAR SCANNER') {
             steps {
