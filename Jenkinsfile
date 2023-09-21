@@ -42,13 +42,13 @@ pipeline {
                 steps {
                     script {
                         def projectName = JOB_NAME
-                        def sonarHostUrl = 'http://192.168.0.129:9000'
+                        
                         
                         sh '''
                             mvn sonar:sonar \
                             -Dsonar.projectName=\$projectName \
                             -Dsonar.projectKey=\$projectName \
-                            -Dsonar.host.url=\$sonarHostUrl \
+                            -Dsonar.host.url= http://192.168.0.129:9000 \
                             -Dsonar.token=\$sonar_token
                         '''
                  }
