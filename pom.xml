@@ -94,7 +94,7 @@
         <plugin>
         <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.7.0.1746</version>
+        <version>3.7.0.2594</version>
       </plugin>
 
         <plugin>
@@ -168,7 +168,7 @@
         <plugin>
           <groupId>org.apache.httpcomponents</groupId>
           <artifactId>httpclient</artifactId>
-          <version>4.5.3</version>
+          <version>4.5.13</version>
         </plugin>
 
 
@@ -178,6 +178,13 @@
 
   <dependencyManagement>
     <dependencies>
+
+      <dependency>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+      </dependency>
+      
       <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>servlet-api</artifactId>
@@ -187,7 +194,7 @@
       <dependency>
         <groupId>org.sonarsource.scanner.maven</groupId>
         <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.7.0.1746</version>
+        <version>3.7.0.2594</version>
       </dependency>
 
       <dependency>
