@@ -49,7 +49,9 @@
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
         <configuration>
-          <reportPlugins>
+          <reporting>
+
+            
             <plugin>
               <artifactId>maven-checkstyle-plugin</artifactId>
             </plugin>
@@ -79,7 +81,7 @@
               <groupId>org.codehaus.mojo</groupId>
               <artifactId>taglist-maven-plugin</artifactId>
             </plugin>
-          </reportPlugins>
+          </reporting>
         </configuration>
       </plugin>
     </plugins>
@@ -159,6 +161,11 @@
           <version>8.0.0.M1</version>
         </plugin>
 
+         <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>3.7.0.2594</version>
+         </plugin>
 
       </plugins>
     </pluginManagement>
