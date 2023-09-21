@@ -43,13 +43,8 @@ pipeline {
                     script {
                         def projectName = JOB_NAME
                         
-                        
                         sh '''
-                            mvn sonar:sonar \
-                            -Dsonar.projectName=\$projectName \
-                            -Dsonar.projectKey=\$projectName \
-                            -Dsonar.host.url= http://192.168.0.129:9000 \
-                            -Dsonar.token=\$sonar_token
+                            mvn sonar:sonar -Dsonar.projectName=\$projectName -Dsonar.projectKey=\$projectName -Dsonar.host.url= http://3.145.90.33:9000 -Dsonar.token=\$sonar_token
                         '''
                  }
             }
