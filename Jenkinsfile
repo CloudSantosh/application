@@ -39,31 +39,24 @@ pipeline {
             sonar_token = credentials('SONAR-TOKEN')
             }
             steps {
-                sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
+                sh 'mvn clean verify sonar:sonar -X -Dsonar.projectName=$JOB_NAME \
                     -Dsonar.projectKey=$JOB_NAME \
                     -Dsonar.host.url=http://3.145.90.33:9000 \
                     -Dsonar.login=${sonar_token}'
             }
+
+        post {
+            success {
+                    echo 'SonarQube analysis completed successfully!'
+            }
+            failure {
+                    echo 'SonarQube analysis failed. Check the SonarQube dashboard for issues.'
+            }
+
         } 
+        }
       /*         
    
-        stage('SONAR SCANNER') {
-            steps {
-                script {
-                    def sonar_token = credentials('SONAR_TOKEN')
-                  //  def sonar_url = ''
-                    
-                    sh '''
-                        mvn clean sonar:sonar \\
-                        -Dsonar.projectName=\${JOB_NAME} \\
-                        -Dsonar.projectKey=\${JOB_NAME} \\
-                        -Dsonar.host.url= http://3.145.90.33:9000 \\
-                        -Dsonar.token=${sonar_token}
-                    '''
-        }
-    }
-}
-
     
         stage('COPY JAR & DOCKERFILE') {
             steps {
