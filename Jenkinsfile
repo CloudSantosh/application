@@ -39,7 +39,7 @@ pipeline {
             sonar_token = credentials('SONAR-TOKEN')
             }
             steps {
-                sh 'mvn clean verify sonar:sonar -X -Dsonar.projectName=$JOB_NAME \
+                sh 'mvn clean verify sonar:sonar -e -Dsonar.projectName=$JOB_NAME \
                     -Dsonar.projectKey=$JOB_NAME \
                     -Dsonar.host.url=http://3.145.90.33:9000 \
                     -Dsonar.login=${sonar_token}'
